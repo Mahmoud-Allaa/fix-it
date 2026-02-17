@@ -1,27 +1,293 @@
-#container {
-  text-align: center;
+.home-content {
+  --background: #F5F5F5;
+  --padding-bottom: 20px;
+}
 
+// Header Section
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 16px 10px;
+  background: white;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.greeting {
+  display: flex;
+  flex-direction: column;
+  
+  .hello-text {
+    font-size: 14px;
+    color: #666;
+    font-weight: 400;
+  }
+  
+  .user-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+.notification-icon {
+  position: relative;
+  
+  ion-icon {
+    font-size: 28px;
+    color: #333;
+  }
+}
+
+.notification-badge {
   position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  top: -5px;
+  right: -5px;
+  --background: #2196F3;
+  --color: white;
+  font-size: 10px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+// Search Section
+.search-container {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  gap: 8px;
+  background: white;
+  
+  .custom-searchbar {
+    flex: 1;
+    --background: #F5F5F5;
+    --border-radius: 8px;
+    --box-shadow: none;
+    color: black;
+    padding: 0;
+    
+    ::ng-deep {
+      .searchbar-input-container {
+        height: 45px;
+      }
+    }
+  }
+  
+  .filter-button {
+    --background: #F5F5F5;
+    --border-radius: 8px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    height: 45px;
+    margin: 0;
+    
+    ion-icon {
+      font-size: 22px;
+      color: #333;
+    }
+  }
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+// Promotional Card
+.promo-card {
+  margin: 16px;
+  border-radius: 16px;
+  box-shadow: none;
+  background: linear-gradient(135deg, #A0E7E5 0%, #7DD3C0 100%);
+  
+  .promo-content {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  color: #8c8c8c;
+    position: relative;
+  }
+  
+  .promo-text {
+    flex: 1;
+    
+    .promo-tag {
+      color: #333;
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0 0 8px 0;
+    }
+    
+    .promo-title {
+      color: #1a1a1a;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 16px 0;
+      line-height: 1.3;
+    }
+  }
+  
+  .book-now-btn {
+    --background: #FF7043;
+    --border-radius: 8px;
+    text-transform: none;
+    font-weight: 600;
+    height: 36px;
+    
+    ion-icon {
+      font-size: 18px;
+    }
+  }
+  
+  .promo-image {
+    width: 120px;
+    height: 120px;
+    
+    img {
+      height: 100%;
 
-  margin: 0;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+    }
+  }
 }
 
-#container a {
-  text-decoration: none;
+// Section Headers
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 16px 12px;
+  
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  
+  .view-all {
+    color: #2196F3;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
+
+// Services Grid
+.services-grid {
+  padding: 0 8px;
+  
+  ion-row {
+    margin-bottom: 8px;
+  }
+  
+  ion-col {
+    padding: 4px;
+  }
+}
+
+.service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  .service-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  
+  .service-name {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+  }
+}
+
+// Service Cards
+.service-card {
+  margin: 8px 16px 16px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: white;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  
+  &:active {
+    transform: scale(0.98);
+  }
+  
+  ion-card-content {
+    padding: 16px;
+  }
+}
+
+.service-details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.service-avatar {
+  width: 50px;
+  height: 50px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.service-info {
+  flex: 1;
+  
+  h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  
+  .service-price {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2196F3;
+  }
+}
+
+.category-badge {
+  --background: #FFE5D9;
+  --color: #FF7043;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
 }

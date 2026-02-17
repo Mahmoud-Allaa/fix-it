@@ -1,0 +1,64 @@
+<ion-header>
+    <div class="header-section">
+        <div class="header-content">
+            <ion-button slot="start" fill="clear" class="back-button" (click)="goBack()">
+                <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+            </ion-button>
+            <ion-title>Most Popular Services</ion-title>
+        </div>
+        <!-- Category Filter Chips -->
+        <div class="category-filter">
+            <ion-chip *ngFor="let category of categories" [class.selected]="selectedCategory === category"
+                (click)="selectCategory(category)">
+                {{ category }}
+            </ion-chip>
+        </div>
+    </div>
+
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+    <!-- Services List -->
+    <div class="services-list">
+        <ion-card *ngFor="let service of services" class="service-card">
+            <ion-card-content>
+                <div class="service-header">
+                    <div class="service-info">
+                        <div class="avatar-container">
+                            <ion-avatar>
+                                <img [src]="service.image" [alt]="service.name" />
+                            </ion-avatar>
+                            @if (service.isOnline) {
+                            <div class="online-indicator"></div>
+                            }
+                        </div>
+                        <div class="service-details">
+                            <h3>{{ service.name }}</h3>
+                            <p class="price">{{ service.price }}</p>
+                            <div class="rating">
+                                <ion-icon name="star" class="star-icon"></ion-icon>
+                                <span>{{ service.rating }} ({{ service.reviews }} reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <ion-badge class="category-badge" [style.background-color]="service.categoryColor">
+                        {{ service.category }}
+                    </ion-badge>
+                </div>
+
+                <div class="action-buttons">
+                    <ion-button fill="outline" class="view-profile-btn" (click)="viewProfile(service)">
+                        <ion-icon name="eye" slot="start"></ion-icon>
+                        View Profile
+                    </ion-button>
+                    <ion-button class="book-now-btn" (click)="bookNow(service)">
+                        <ion-icon name="calendar" slot="start"></ion-icon>
+                        Book Now
+                    </ion-button>
+                </div>
+            </ion-card-content>
+        </ion-card>
+    </div>
+</ion-content>

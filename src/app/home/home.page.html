@@ -1,20 +1,85 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content [fullscreen]="true" class="home-content">
+  <!-- Header Section -->
+  <div class="header-section">
+    <div class="user-info">
+      <ion-avatar class="user-avatar">
+        <img src="assets/icon/user.webp" alt="User" />
+      </ion-avatar>
+      <div class="greeting">
+        <span class="hello-text">Hello👋</span>
+        <h2 class="user-name">{{ userName }}</h2>
+      </div>
+    </div>
+    <div class="notification-icon">
+      <ion-icon name="notifications-outline"></ion-icon>
+      <ion-badge class="notification-badge" *ngIf="notificationCount > 0">{{ notificationCount }}</ion-badge>
+    </div>
   </div>
+
+  <!-- Search Bar -->
+  <div class="search-container">
+    <ion-searchbar 
+      placeholder="Search for any service..." 
+      mode="ios"
+      class="custom-searchbar">
+    </ion-searchbar>
+    <ion-button class="filter-button" fill="clear">
+      <ion-icon name="options"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- Promotional Banner -->
+  <ion-card class="promo-card">
+    <ion-card-content class="promo-content">
+      <div class="promo-text">
+        <p class="promo-tag">Save 25% Today!</p>
+        <h3 class="promo-title">Exclusive discounts<br>on home service</h3>
+        <ion-button class="book-now-btn" size="small">
+          <ion-icon name="calendar-outline" slot="start"></ion-icon>
+          Book Now
+        </ion-button>
+      </div>
+      <div class="promo-image">
+        <img src="assets/icon/worker.png" alt="Worker" />
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Most Booked Services -->
+  <div class="section-header">
+    <h3>Most Booked Services</h3>
+    <a class="view-all">View all</a>
+  </div>
+
+  <ion-grid class="services-grid">
+    <ion-row>
+      <ion-col size="3" *ngFor="let service of services">
+        <div class="service-item" [style.background-color]="service.color" (click)="viewService(service)">
+          <div class="service-icon">{{ service.icon }}</div>
+          <p class="service-name">{{ service.name }}</p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Popular Near You -->
+  <div class="section-header">
+    <h3>Popular Near You</h3>
+    <a class="view-all" (click)="viewAllServices()">View all</a>
+  </div>
+
+  <ion-card class="service-card" *ngFor="let service of popularServices" (click)="viewTechnicianDetail(service)">
+    <ion-card-content>
+      <div class="service-details">
+        <ion-avatar class="service-avatar">
+          <img [src]="service.image" alt="{{ service.name }}" />
+        </ion-avatar>
+        <div class="service-info">
+          <h4>{{ service.name }}</h4>
+          <p class="service-price">{{ service.price }}</p>
+        </div>
+        <ion-badge class="category-badge">{{ service.category }}</ion-badge>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -1,0 +1,77 @@
+<ion-content [fullscreen]="true" class="technician-detail-content">
+  <!-- Header Buttons -->
+  <div class="header-buttons">
+    <ion-button fill="clear" class="back-button" (click)="goBack()">
+      <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" class="bookmark-button" (click)="toggleBookmark()">
+      <ion-icon [name]="technician.isBookmarked ? 'bookmark' : 'bookmark-outline'" slot="icon-only"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- Technician Photo -->
+  <div class="technician-photo">
+    <img src="assets/icon/worker.webp" [alt]="technician.name" />
+  </div>
+
+  <!-- Details Card -->
+  <div class="details-container">
+    <!-- Technician Info -->
+    <div class="technician-info">
+      <div class="name-category">
+        <h1 class="technician-name">{{ technician.name }}</h1>
+        <ion-badge class="category-badge" [style.background-color]="technician.categoryColor">
+          {{ technician.category }}
+        </ion-badge>
+      </div>
+      
+      <div class="rating-section">
+        <ion-icon name="star" class="star-icon"></ion-icon>
+        <span class="rating-text">{{ technician.rating }} ({{ technician.reviews }})</span>
+      </div>
+
+      <div class="location-section">
+        <ion-icon name="location" class="location-icon"></ion-icon>
+        <span class="location-text">{{ technician.location }}</span>
+      </div>
+
+      <div class="price-section">
+        <span class="price">{{ technician.price }}</span>
+        <span class="price-unit">({{ technician.priceUnit }})</span>
+      </div>
+    </div>
+
+    <!-- About Me -->
+    <div class="about-section">
+      <h2 class="section-title">About Me</h2>
+      <p class="bio-text">{{ technician.bio }}</p>
+    </div>
+
+    <!-- Gallery -->
+    <!-- <div class="gallery-section">
+      <div class="gallery-header">
+        <h2 class="section-title">Gallery</h2>
+        <a class="view-all-link" (click)="viewAllGallery()">View all</a>
+      </div>
+      <div class="gallery-grid">
+        @for (photo of technician.gallery; track photo) {
+          <div class="gallery-item">
+            <img [src]="photo" alt="Gallery photo" />
+          </div>
+        }
+      </div>
+    </div> -->
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <ion-button fill="outline" class="message-button" (click)="sendMessage()">
+        <ion-icon name="chatbubble" slot="start"></ion-icon>
+        Message
+      </ion-button>
+      <ion-button class="book-button" (click)="bookNow()">
+        <ion-icon name="calendar" slot="start"></ion-icon>
+        Book Now
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

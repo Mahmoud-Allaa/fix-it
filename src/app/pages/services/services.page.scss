@@ -1,0 +1,184 @@
+ion-header {
+  background: #EFF6FF;
+
+  .header-section {
+    background: #EFF6FF;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+ion-content {
+  --background: #EFF6FF;
+}
+
+// Category Filter
+.category-filter {
+//   display: flex;
+  gap: 8px;
+  padding: 16px;
+  overflow-x: scroll;
+  white-space: nowrap;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  ion-chip {
+    --background: white;
+    --color: #666;
+    border-radius: 20px;
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    height: 36px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-inline-end: 12px;
+
+    &:last-child {
+      margin-inline-end: 0;
+    }
+
+    &.selected {
+      --background: #2196F3;
+      --color: white;
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+// Services List
+.services-list {
+  padding: 0 0 80px;
+}
+
+.service-card {
+  margin-bottom: 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  background: white;
+
+  ion-card-content {
+    padding: 16px;
+  }
+}
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.service-info {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+.avatar-container {
+  position: relative;
+
+  ion-avatar {
+    width: 56px;
+    height: 56px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .online-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 14px;
+    height: 14px;
+    background: #4CAF50;
+    border: 2px solid white;
+    border-radius: 50%;
+  }
+}
+
+.service-details {
+  flex: 1;
+
+  h3 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+
+  .price {
+    margin: 0 0 6px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2196F3;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #666;
+
+    .star-icon {
+      font-size: 14px;
+      color: #FFC107;
+    }
+
+    span {
+      font-weight: 500;
+    }
+  }
+}
+
+.category-badge {
+  --background: #FFE5D9;
+  --color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  height: fit-content;
+}
+
+// Action Buttons
+.action-buttons {
+  display: flex;
+  gap: 8px;
+
+  ion-button {
+    flex: 1;
+    height: 40px;
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: none;
+    --border-radius: 10px;
+
+    ion-icon {
+      font-size: 18px;
+    }
+  }
+
+  .view-profile-btn {
+    --color: #333;
+    --background: transparent;
+    --border-color: #E0E0E0;
+    --border-width: 1.5px;
+  }
+
+  .book-now-btn {
+    --background: #2196F3;
+    --color: white;
+  }
+}
