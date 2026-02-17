@@ -1,13 +1,94 @@
 <ion-header>
     <div class="header-content">
-        <ion-button slot="start" fill="clear" class="back-button">
+        <ion-button slot="start" fill="clear" class="back-button" (click)="goBack()">
             <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
         </ion-button>
         <ion-title>My Requests</ion-title>
     </div>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
-    <h2>My Requests</h2>
-    <p>Your service requests will appear here.</p>
+<ion-content [fullscreen]="true">
+  <div class="requests-container">
+    @if (requests.length === 0) {
+      <div class="empty-state">
+        <ion-icon name="calendar" class="empty-icon"></ion-icon>
+        <h3>No Requests Yet</h3>
+        <p>Your service requests will appear here</p>
+      </div>
+    } @else {
+      @for (request of requests; track request.id) {
+        <ion-card class="request-card">
+          <ion-card-content>
+            <!-- Request Header -->
+            <div class="request-header">
+              <div class="technician-info" (click)="viewTechnician(request)">
+                <ion-avatar class="technician-avatar">
+                  <img [src]="request.technicianImage" [alt]="request.technicianName" />
+                </ion-avatar>
+                <div class="info-details">
+                  <h3>{{ request.technicianName }}</h3>
+                  <p class="service-name">{{ request.serviceName }}</p>
+                  <ion-chip class="category-chip">
+                    {{ request.category }}
+                  </ion-chip>
+                </div>
+              </div>
+              <ion-badge 
+                class="status-badge" 
+                [style.background-color]="getStatusColor(request.status)">
+                {{ request.status | titlecase }}
+              </ion-badge>
+            </div>
+
+            <!-- Request Details -->
+            <div class="request-details">
+              <div class="detail-item">
+                <ion-icon name="calendar" class="detail-icon"></ion-icon>
+                <span>{{ request.date }}</span>
+              </div>
+              <div class="detail-item">
+                <ion-icon name="time" class="detail-icon"></ion-icon>
+                <span>{{ request.time }}</span>
+              </div>
+              <div class="detail-item price-item">
+                <span class="price-label">Total:</span>
+                <span class="price-value">{{ request.price }}</span>
+              </div>
+            </div>
+
+            <!-- Rating (for completed) -->
+            @if (request.status === 'completed' && request.rating) {
+              <div class="rating-section">
+                <ion-icon name="star" class="star-icon"></ion-icon>
+                <span class="rating-text">{{ request.rating }}</span>
+              </div>
+            }
+
+            <!-- Actions -->
+            <div class="action-buttons">
+              @if (request.status === 'pending') {
+                <ion-button fill="outline" class="message-btn" (click)="sendMessage(request)">
+                  <ion-icon name="chatbubble" slot="start"></ion-icon>
+                  Message
+                </ion-button>
+                <ion-button fill="outline" class="cancel-btn" (click)="cancelRequest(request)">
+                  <ion-icon name="close" slot="start"></ion-icon>
+                  Cancel
+                </ion-button>
+              }
+              @if (request.status === 'completed') {
+                <ion-button fill="outline" class="message-btn" (click)="sendMessage(request)">
+                  <ion-icon name="chatbubble" slot="start"></ion-icon>
+                  Message
+                </ion-button>
+                <ion-button class="rebook-btn">
+                  Re-book
+                </ion-button>
+              }
+            </div>
+          </ion-card-content>
+        </ion-card>
+      }
+    }
+  </div>
 </ion-content>

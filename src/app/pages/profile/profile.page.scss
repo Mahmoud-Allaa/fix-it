@@ -1,27 +1,197 @@
-.back-button {
-  --color: #333;
-  margin: 0;
-  background-color: white;
-  border-radius: 4px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  
-  ion-icon {
-    font-size: 18px;
-  }
+ion-header {
+    --background: #2196F3;
+
+    .header-content {
+        background-color: #F5F7FA;
+    }
 }
 
 ion-content {
-  --background: #F5F5F5;
-}
+    --background: #F5F7FA;
 
-h2 {
-  color: #1a1a1a;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
+    .profile-container {
 
-p {
-  color: #666;
-  font-size: 16px;
+        .profile-card {
+            margin-bottom: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+            ion-card-content {
+                background-color: white;
+                padding: 20px;
+
+                .profile-header {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-bottom: 24px;
+                    padding-bottom: 20px;
+                    border-bottom: 1px solid #E0E0E0;
+
+                    .avatar-container {
+                        position: relative;
+                        margin-bottom: 16px;
+
+                        .profile-avatar {
+                            width: 100px;
+                            height: 100px;
+                            border: 4px solid #2196F3;
+                        }
+
+                        .camera-button {
+                            position: absolute;
+                            bottom: 0;
+                            right: 0;
+                            width: 36px;
+                            height: 36px;
+                            border-radius: 50%;
+                            background: #2196F3;
+                            --padding-start: 0;
+                            --padding-end: 0;
+                            margin: 0;
+                            padding: 0;
+
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+
+                            ion-button {
+                                padding: 0 !important;
+                            }
+
+                            ion-icon {
+                                font-size: 20px;
+                                color: white;
+                            }
+                        }
+                    }
+
+                    .user-details {
+                        text-align: center;
+
+                        h2 {
+                            margin: 0 0 6px 0;
+                            font-size: 22px;
+                            font-weight: 700;
+                            color: #333;
+                        }
+
+                        .member-since {
+                            margin: 0;
+                            font-size: 13px;
+                            color: #666;
+                        }
+                    }
+                }
+
+                .contact-info {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 14px;
+
+                    .info-item {
+                        display: flex;
+                        align-items: center;
+                        gap: 12px;
+                        padding: 10px;
+                        background: #F5F7FA;
+                        border-radius: 8px;
+
+                        .info-icon {
+                            font-size: 20px;
+                            color: #2196F3;
+                            flex-shrink: 0;
+                        }
+
+                        span {
+                            font-size: 14px;
+                            color: #333;
+                        }
+                    }
+                }
+            }
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 16px;
+            padding: 0 16px;
+
+            .stat-card {
+                background: white;
+                padding: 16px 12px;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+                text-align: center;
+
+                .stat-icon {
+                    font-size: 28px;
+                    color: #2196F3;
+                    margin-bottom: 8px;
+                }
+
+                .stat-value {
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: #333;
+                    margin-bottom: 4px;
+                }
+
+                .stat-label {
+                    font-size: 12px;
+                    color: #666;
+                }
+            }
+        }
+
+        .menu-card {
+            margin-bottom: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+
+            ion-list {
+                padding: 0;
+                background: white;
+
+                ion-item {
+                    --padding-start: 16px;
+                    --padding-end: 16px;
+                    --min-height: 56px;
+                    --border-color: #E0E0E0;
+                    --background: white;
+                    --background-hover: #F5F7FA;
+
+                    .menu-icon {
+                        font-size: 22px;
+                        color: #2196F3;
+                        margin-right: 16px;
+                    }
+
+                    ion-label {
+                        font-size: 15px;
+                        font-weight: 500;
+                        color: #333;
+                    }
+
+                    .chevron-icon {
+                        font-size: 18px;
+                        color: #BDBDBD;
+                    }
+
+                    &.danger-item {
+                        .menu-icon {
+                            color: #F44336;
+                        }
+
+                        ion-label {
+                            color: #F44336;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
